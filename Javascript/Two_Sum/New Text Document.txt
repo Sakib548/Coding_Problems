@@ -1,0 +1,23 @@
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var sortedSquares = function(nums) {
+    let squaredArray = []
+    for(let i =0;i<nums.length;i++){
+         squaredArray.push((nums[i] * nums[i]))
+    }
+     let temp;
+     for(let i =0;i<squaredArray.length;i++){
+         for(let j = i+1;j <squaredArray.length;j++){
+             if(squaredArray[i]>squaredArray[j]){
+                 temp = squaredArray[j];
+                 squaredArray[j] = squaredArray[i];
+                 squaredArray[i] = temp;
+             }
+         }
+    }
+    return squaredArray;
+};
+let nums = [-4,-1,0,3,10]
+console.log(sortedSquares(nums))
