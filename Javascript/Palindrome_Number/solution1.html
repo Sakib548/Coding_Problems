@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palindrome or Not</title>
+  </head>
+  <body>
+    <h1>Enter Your Number</h1>
+    <input type="text" id="number" />
+    <p></p>
+    <button id="submit">Submit</button>
+
+    <script>
+      const button = document.getElementById("submit");
+      const number = document.getElementById("number");
+      const para = document.querySelector("p");
+      button.addEventListener("click", function (e) {
+        // console.log("Palindrome", isPalindrome(parseInt(number.value)));
+        let result = isPalindrome(parseInt(number.value));
+        para.innerText = `${number.value} is 
+          ${result ? "Palindrome" : "Not a palindrome"}`;
+      });
+
+      let isPalindrome = function (x) {
+        if (x < 0) {
+          return false;
+        }
+        let originalArray = x;
+        let reversedArray = 0;
+
+        while (x > 0) {
+          let digit = x % 10;
+          reversedArray = reversedArray * 10 + digit;
+          x = Math.floor(x / 10);
+        }
+        if (reversedArray === originalArray) {
+          return true;
+        } else {
+          return false;
+        }
+      };
+    </script>
+  </body>
+</html>
